@@ -1,0 +1,13 @@
+<template name="createReview">
+<div class="fb-comments" data-href="http://gopollit.com" data-numposts="5" data-colorscheme="light"></div>
+
+<script>
+    $(".fb-comments").attr("data-href", window.location.href);
+</script>
+<!-- @model Pollit.Site.ViewModels.ReviewView
+
+@Html.TextAreaFor(r => r.Content, new { placeholder = "Write a review" })
+@Html.ValidationMessageFor(model => model.Content)
+<br />
+<button type="button">Submit</button> -->
+</template>

@@ -1,0 +1,20 @@
+<template name="ratings">
+
+<div id="poll-rating" class="product-poll">
+    @foreach (var ratingbar in Enumerable.Range(1, 5))
+    {
+        <label style="display:inline-block;" class="editable ratingbar rating-bar-@ratingbar">
+            @Html.Label(string.Empty, new { @style = "display:inline", @class = "yellow rating first-bar" })@Html.RadioButtonFor(m => m.TotalRating, ratingbar)
+        </label>
+    }
+</div>
+<div>
+    <ul id="number-poll" class="span12">
+        <li class="span2">1</li>
+        <li class="span2">2</li>
+        <li class="span2">3</li>
+        <li class="span2">4</li>
+        <li class="span2">5</li>
+    </ul>
+</div>
+</template>

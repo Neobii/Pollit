@@ -1,7 +1,63 @@
 <template name="home">
-  <h1>Home</h1>
-  {{#each polls}}
-  <h1>Poll name: {{name}}</h1>
-  <p>{{description}}</p>
-  {{/each}}
+<section id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12 search-wrap">
+                <div class="search-bg clearfix">
+                    <div class="input-append span12">
+                        @using (Html.BeginForm("Query", "Search", FormMethod.Get, new { @class = "search-form" }))
+                        {
+                            @Html.TextBox("query", null, new { @class = "home-search", placeholder = "Search" })
+                            <input id="search-submit" class="btn pull-right home-search-box" type="submit" value="" />
+                            @Html.Hidden("Location")
+                            @Html.Hidden("Category")
+                        }
+                    </div>
+
+                </div>
+                <div class="search-triangle-wrap">
+                    <div class="search-triangle"></div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid nopadding">
+            <div class="row-fluid">
+                <div id="homepage-fields" class="homepage-poll">
+                    <div id="location-container" class="search-option-container">
+                        <button class="btn location search-options-btn" type="button" data-target="location"><p><strong>Near</strong> (Zipcode)<img class="searchbar-icons" src="images/location-large.png" /></p></button>
+                        <div id="location-dropdown" class="dropdown">
+                            <div id="location-poll">
+                               {{> near}}
+                            </div>
+                        </div>
+                    </div>
+                    <div id="filter-container" class="search-option-container">
+                        <button class="btn filter search-options-btn" type="button" data-target="filter"><p><strong>Filter</strong><img class="searchbar-icons" src="images/filter-large.png" /></p></button>
+                        <div id="filter-dropdown" class="dropdown">
+                            <div id="filter-poll">
+                                {{> filter}}
+                            </div>
+                        </div>
+                    </div>                  
+                    <button class="btn create-poll search-options-btn" type="button" data-target="createpoll"><p><strong>Create New Poll</strong><img class="searchbar-icons" src="images/plus-large.png" /></p></button>
+                </div>
+                <div id="homepage-options" class="homepage-poll">
+                    <div id="createpoll-dropdown" class="dropdown">
+                        <div id="create-poll" class="clear">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                //@Html.Partial("_CreatePoll")
+                                @Html.Action("Create", "Poll", new { partial = true })
+                            }
+                            else
+                            {
+                                @Html.Partial("_NotAuthorized")
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 </template>

@@ -1,0 +1,27 @@
+<template name="reviewList">
+<div class="review-section">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                @foreach(var review in Model.Reviews)
+                {
+                <div id="@review.Id" class="review-single">
+                    <div class="span1">
+                        @if (review.Rating != null) {
+                            <img src="/images/ratings/@review.Rating.Number-bars.png" />
+                        }
+                    </div>
+                    <div class="span11 review-single-content">
+                        <hgroup>
+                            <h4>@review.Creator.Name</h4>
+                            <h5>@String.Format("{0:d}", review.Created)</h5>
+                        </hgroup>
+                        <p>@review.Content</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+</template>

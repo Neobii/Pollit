@@ -1,0 +1,13 @@
+<template name="filter">
+<ul>
+    @foreach(var category in ViewBag.FilterCategories)
+    {
+        <li>
+            <label class="search-options">
+                @category.Name
+                <input type="radio" name="Category" value="@category.Name" data-target="Category" />
+            </label>    
+        </li> 
+    }
+</ul>
+</template>

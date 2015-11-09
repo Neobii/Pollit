@@ -1,4 +1,14 @@
 <template name="createPoll">
-  <h1>What's up</h1>
-  {{> quickForm collection="Polls" id="insertPollForm" type="insert"}}
+	{{> quickForm collection="Polls" id="insertPollForm" type="insert"}}
+  <div id="name-desc">
+        
+    </div>
+    <div id="file-upload" style="color:white;">
+        <p>Poll Image Upload:</p>
+        <input type="file" id="file" name="file" />
+        <div id="img-preview"></div>
+    </div>
+    <div class="clear"></div><br />
+    
+    <input id="create-poll-button" class="btn" type="submit" value="Create" />
 </template>

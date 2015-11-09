@@ -1,0 +1,30 @@
+<template name="myPolls">
+<section id="main-content">
+    <div class="container-fluid">
+        <div class="row-fluid"><h3>My Polls</h3></div>
+            <table class="table">
+            {{#each polls}}
+												  
+                <tr>
+                    <th>
+                        {{name}}
+                    </th>
+                    <th>
+                        {{description}} //actuallly suppose to be rating
+                    </th>
+        
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.ActionLink( item.Name, "Index", new { item.Linkable.Id})
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserRating)
+                    </td>     
+                </tr>
+            {{/each}}
+            </table>
+        </div>
+   </section>
+</template>

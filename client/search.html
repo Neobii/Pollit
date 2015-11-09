@@ -1,0 +1,44 @@
+<template name="search">
+<section id="search-page-header">
+    <div class="container-fluid">
+
+        <h1>
+            @ViewBag.Query
+        </h1>
+    </div>
+</section>
+<section id="main-content" class="search-page">
+    <div class="container-fluid">
+        <div class="row-fluid">
+           
+        @foreach (var item in Model)
+         {      
+            
+            <div class="span4">
+                <a href="/p/@item.Linkable.Id"><img src="/images/pollImages/@item.PollImage" /></a>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <h3><a href="/p/@item.Linkable.Id">@item.Name</a></h3>
+                    </div>
+                  
+                    <div class="span6">       
+                        <p class="search-page-reviews">
+                            @if (item.TotalRating != null && item.TotalRating > 0)
+                            {
+                                <div class="span3">
+                                    <img src="/images/ratings/@item.TotalRating-bars.png" />
+                                </div>
+                            }
+                             &nbsp;&nbsp;| 
+                            @item.ReviewCount Reviews
+                        </p>                      
+                    </div>
+                </div>
+                <p>@item.Location</p>
+                <p class="search-page-category">Category: @item.Category</p>
+            </div>
+        }
+        </div>
+    </div>
+</section>
+</template>
